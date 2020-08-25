@@ -1,0 +1,9 @@
+
+<ul>
+    {% for obj in qs %}
+    <li>
+        {{ obj.user }}
+        {{ obj.avatar.url }}
+    </li>
+</ul>
+{% endfor %}
