@@ -1,0 +1,132 @@
+{% extends 'base.html'%}
+{% block title %}My profile{% endblock title %}
+
+
+{% block content %}
+    <div class="longer ui modal mymodal">
+            <i class="close icon"></i>
+            <div class="header">
+            Update your Profile
+            </div>
+
+            <div class="image content">
+                <div class="ui medium image">
+                    <img src="{{ profile.avatar.url  }}">
+                </div>
+                 <div class="description">
+                    <div class="ui header">Provide newest information about yourself.</div>
+                        <form action="" method="post" class="ui form" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                 </div>
+            </div>
+        <div class="actions">
+            <button type="submit" class="ui positive right labeled icon button">
+                Update
+                <i class="checkmark icon"></i>
+             </button>
+        </form>
+  </div>
+</div>
+{##}
+{#    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#  <div class="modal-dialog">#}
+{#    <div class="modal-content">#}
+{#      <div class="modal-header">#}
+{#        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>#}
+{#        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#          <span aria-hidden="true">&times;</span>#}
+{#        </button>#}
+{#      </div>#}
+{#      <div class="modal-body">#}
+{#        ...#}
+{#      </div>#}
+{#      <div class="modal-footer">#}
+{#        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>#}
+{#        <button type="button" class="btn btn-primary">Save changes</button>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+
+
+
+
+<div class="ui segment">
+    {% if confirm %}
+        <div class="ui green message">Your Profile has been updated</div>
+    {% endif %}
+    <h3>My profile: {{ request.user }}</h3>
+    <div class="ui grid">
+
+
+    <div class="row">
+        <div class="six wide column">
+            <img class="ui medium rounded image" src="{{ profile.avatar.url }}" alt="profile image">
+           <div class=" row nt-5">
+
+                <button class="ui secondary button" data-toggle="modal" data-target="#exampleModal" id="modal-btn">Update your profile</button>
+           </div>
+
+
+        </div>
+        <div class="ten wide column">
+                <table class=" ui table">
+                    <tbody>
+                        <tr>
+                            <td>Username</td>
+                            <td>{{ profile.user }}</td>
+                        </tr>
+                         <tr>
+                            <td>First name</td>
+                            <td>{{ profile.first_name}}</td>
+                        </tr>
+                          <tr>
+                            <td>Last name</td>
+                            <td>{{ prEmeofile.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bio</td>
+                            <td>{{ profile.bio }}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Friends</td>
+                            <td>{{ profile.get_friends_no }}</td>
+                        </tr>
+                        <tr>
+                            <td>Lists of Friends</td>
+                            <td>
+                                <ul>
+                                    {% for friend in profile.get_friends %}
+                                    <li>{{ friend }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Number of Posts</td>
+                            <td>{{ profile.get_post_no }}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth</td>
+                            <td>{{ profile.date_of_birth }}</td>
+                        </tr>
+                     <tr>
+                            <td>Gender</td>
+                            <td>{{ profile.gender }}</td>
+                        </tr>
+                       <tr>
+                            <td>City</td>
+                            <td>{{ profile.city }}, {{ profile.country }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+
+  {% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--Custom css -->
+      <link rel="stylesheet" type="text/css" href={% static 'style.css' %}>
+      <link rel="stylesheet" type="text/css" href={% static 'style2.css' %}>
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+
+    <title>Visible {% block title %}{% endblock title %}</title>
+{#  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">#}
+
+  </head>
+
+  <body>
+
+  {% include 'navbar.html' %}
+
+    <div class="ui container">
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+
+
+
+
+
+
+ {% include 'footer.html' %}
+
+</body>
+{% block scripts %}
+
+     <script>
+            $(document).ready(function (){
+        $('#modal-btn').click(function (){
+            $('.ui.longer.modal')
+            .modal('show');
+        })
+
+    })
+</script>
+{% endblock scripts %}
+
+ <!--Custom js ADD HERE-->
+  <script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+</html>

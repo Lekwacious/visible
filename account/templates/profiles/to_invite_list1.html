@@ -1,0 +1,28 @@
+
+
+
+
+{% block content %}
+        {% for people in ap %}
+
+             <h2>{{ people.user }}</h2>
+            <div class="two wide column">
+                        <img  class="ui size mini circular image" src="{{ people.avatar.url }}" alt="">
+            </div>
+                    <div class="two wide column">
+
+                        <p>{{ people.bio }}</p>
+
+                                <form action="{% url 'send-invite' %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="profile_pk" value={{ people.pk }}>
+                                    <button type="submit" class="ui positive basic button mb-5 w-big"><i class="plus square icon "></i>Add friend</button>
+                                 </form>
+</div>
+
+
+    {% endfor %}
+
+
+
+{% endblock content %}
