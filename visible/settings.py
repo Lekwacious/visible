@@ -26,7 +26,7 @@ SECRET_KEY = '&m-p_72b=nl5od=+tqr@-ew-@7=$!2s5skpd5f_lc*k613+e0@'
 DEBUG = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com/']
+ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com']
 
 
 # Application definition
