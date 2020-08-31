@@ -80,7 +80,8 @@
 
         {% endfor %}
     </div>
-    <div class="five wide column">
+<!---create post section---->
+     <div class="five wide column">
         <div class="ui segment">
             {% if post_added %}
                 <div class="ui green message">Post added</div>
@@ -91,12 +92,11 @@
                 <button type='submit' name="submit_p_form" class="ui positive button w-full mt-5">Post</button>
             </form>
         </div>
+
         <div class=" ui segment">
-            <h3>People you may know</h3>
-
-         {% include 'profiles/to_invite_list1.html' %}
-
-
+            <h3>Your invites</h3>
+            {% url "my-invites-view2" %}
+        min4
 
 
 
@@ -105,7 +105,9 @@
 
     </div>
 </div>
-    {% include 'profiles/to_invite_list1.html' %}
+
+
+
 {% endblock content %}
 
 {% block scripts %}

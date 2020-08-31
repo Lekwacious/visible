@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q
 from .models import Profile, Relationship
-from .forms import ProfileModelForm
+from .forms import ProfileModelForm, SearchForm
 from django.views.generic import ListView
+
 
 @login_required
 def dashboard(request):
@@ -32,7 +34,8 @@ def register(request):
                 user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,
                                                 email=email, password=password)
                 user.save()
-                Profile.objects.create(user=user)
+               # Profile.objects.create(user=user)
+
                 return render(request, 'account/register_done.html')
 
         else:
@@ -70,11 +73,29 @@ def invites_received_view(request):
         is_empty = True
 
     context = {'qs': results,
-               'is_empty': is_empty,}
-    print(profile)
+               'is_empty': is_empty, }
+
     print(results)
+    print('-----------')
     print(qs)
     return render(request, 'profiles/my_invites.html', context)
+
+
+def invites_received_view2(request):
+    profile = Profile.objects.get(user=request.user)
+    qs = Relationship.objects.invitations_received(profile)
+    results = list(map(lambda x: x.sender, qs))
+    is_empty = False
+    if len(results) == 0:
+        is_empty = True
+
+    context = {'qs': results,
+               'is_empty': is_empty, }
+
+    print(results)
+    print('-----------')
+    print(qs)
+    return render(request, 'profiles/my_invites2.html', context)
 
 
 def accept_invitation(request):
@@ -107,12 +128,13 @@ def invite_profiles_list_view(request):
 
     return render(request, 'profiles/to_invite_list.html', context)
 
+
 def invite_profiles_list_views(request):
     user = request.user
     ap = Profile.objects.get_all_profiles_to_invite(user)
 
     context = {'ap': ap}
-    print(ap)
+
     return render(request, 'profiles/to_invite_list1.html', context)
 
 
@@ -129,7 +151,7 @@ class ProfileLIstView(ListView):
     model = Profile
     template_name = 'profiles/profile_list.html'
 
-    # context_object_name = 'qs'
+    context_object_name = 'qs'
 
     def get_queryset(self):
         qs = Profile.objects.get_all_profiles(self.request.user)
@@ -181,3 +203,41 @@ def remove_from_friends(request):
         return redirect(request.META.get('HTTP_REFERER'))
 
     return redirect('my-profile-view')
+
+
+def friends_list(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    qs = Profile.get_friends(user)
+    print(qs)
+    context = {
+        'qs': qs,
+    }
+
+    return render(request, 'profiles/friend_lists.html', context)
+
+
+def people_you_mayKnow(request):
+    profile = Profile.objects.get(user=request.user)
+    people = Profile.objects.all()
+    user = request.user
+    people_you_mayknow = Profile.objects.get_all_profiles_to_invite(user)
+
+    context = {
+        'people': people_you_mayknow,
+    }
+    print(people_you_mayknow)
+    print(profile)
+    return render(request, 'profiles/peopple-you-may-know.html', context)
+
+
+def user_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
+    return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})

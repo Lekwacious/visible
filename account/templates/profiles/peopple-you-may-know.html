@@ -1,0 +1,41 @@
+{% block title %}people  you may know {% endblock title %}
+
+{% block content %}
+
+        {% for obj in people %}
+         <div class="ui segment">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="three wide column">
+                        <img class="ui small circular image" src="{{ obj.avatar.url }}" alt="">
+                    </div>
+                    <div class="thirteen wide column">
+                            <h3>{{ obj.first_name }} {{ obj.last_name }}</h3>
+                            <h3>{{ obj.bio }}</h3>
+                            <h3>{{ obj.gender }}</h3>
+                        <br>
+
+                        <form action="{% url 'accept-invite' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value="{{ obj.pk }}">
+                                 <button type="submit" class="ui positive basic button w-big mb-5">
+                                <i class="check icon"></i> Accept Invite
+                            </button>
+                        </form>
+                        <form action="{% url 'reject-invite' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="profile_pk" value="{{ obj.pk }}">
+                            <button type="submit" class="ui negative basic button w-big mb-5">
+                                <i class="close icon"></i> Reject Invite
+                            </button>
+                        </form>
+                        </div>
+                </div>
+            </div>
+
+         </div>
+        {% endfor %}
+
+
+
+{% endblock content %}

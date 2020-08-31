@@ -15,7 +15,7 @@
                         <img  class="ui small circular image" src="{{ obj.avatar.url }}" alt="">
                     </div>
                     <div class="thirteen wide column">
-                        <h3>{{ obj.user }}</h3>
+                        <h3>{{ obj.first_name }} {{ obj.last_name }}</h3>
                         <p>{{ obj.bio }}</p>
                         <button class="ui primary button mb-5 w-big">See profile</button>
 
@@ -28,7 +28,7 @@
                         {% endif %}
 
                         {% if obj.user in rel_receiver and request.user not in obj.friends.all %}
-                            <button class="ui disabled button mb-5 w-big"><i class="ui icon"></i>Waiting for approval</button>
+                            <button class="ui disabled button mb-5 w-big"><i class="ui icon"></i> Request Waiting for approval</button>
                         {% endif %}
 
 

@@ -1,9 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for obj in qs %}
+<div class="ui segment">
+<div class="ui grid">
+<div class="three wide column">
 
-<ul>
-    {% for obj in qs %}
-    <li>
-        {{ obj.user }}
-        {{ obj.avatar.url }}
-    </li>
-</ul>
+    <img class="ui small circular image" src="{{ obj.avatar.url }}" alt="">
+
+
+</div>
+     <div class="thirteen wide column">
+         <h3>{{ obj.first_name }} {{ obj.last_name  }}</h3>
+        <h3>Bio: {{ obj.bio }}</h3>
+        <h3>Gender: {{ obj.gender }}</h3>
+         <a href=""><button class="ui primary button w-big mb-5">See profile</button></a>
+        </div>
+        </div>
+</div>
 {% endfor %}
+{% endblock content %}
+
+
+
+
+

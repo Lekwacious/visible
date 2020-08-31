@@ -2,7 +2,8 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 from .views import my_profile_view, invites_received_view, ProfileLIstView, invite_profiles_list_view, send_invitation, \
-    remove_from_friends, accept_invitation, reject_invitation, invite_profiles_list_views
+    remove_from_friends, accept_invitation, reject_invitation, invite_profiles_list_views, friends_list,\
+    people_you_mayKnow, invites_received_view2, user_search
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('register/', views.register, name='register'),
     path('myprofile/', my_profile_view, name='my-profile-view'),
-
+    path('my-invites2/', invites_received_view2, name='my-invites-view2'),
     path('my-invites/', invites_received_view, name='my-invites-view'),
     path('all-profiles/', ProfileLIstView.as_view(), name='all-profiles-view'),
     path('to-invite/', invite_profiles_list_view, name='invite-profiles-view'),
@@ -25,4 +26,8 @@ urlpatterns = [
     path('remove-friend/', remove_from_friends, name='remove-friend'),
     path('my-invites/accept', accept_invitation, name='accept-invite'),
     path('my-invites/reject', reject_invitation, name='reject-invite'),
+   path('friends', friends_list, name='friends'),
+    path('peopleyoumayknow', people_you_mayKnow, name='peopleyoumayknow'),
+    path('search', user_search, name='search'),
+
 ]

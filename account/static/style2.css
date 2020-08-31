@@ -37,7 +37,7 @@ body{
     position: relative;
     margin-top: -70px;
     height: 70px;
-    clear: both;
+    #clear: both;
 
 }
 .size{

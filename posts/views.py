@@ -11,11 +11,11 @@ from django.contrib import messages
 @login_required
 def post_comment_create_and_list_view(request):
     qs = Post.objects.all()
-    profile = Profile.objects.get(user=request.user)
+   # profile = Profile.objects.get(user=request.user)
 
     p_form = PostModelForm()
     c_form = CommentModelForm()
-    post_added = False
+   # post_added = False
 
     post_added = False
 
@@ -107,3 +107,5 @@ class PostUpdateView(UpdateView):
         else:
             form.add_error(None, "You need to be the author of the post in order to update the post")
             return super().form_invalid(form)
+
+

@@ -12,11 +12,22 @@
           </a>
      {% endif %}
           <a class="item" href="{% url 'my-profile-view' %}">
-            Profile
+            My Profile
           </a>
+            <a class="item" href="{% url 'friends' %}">
+            Friends
+          </a>
+
           <a class="item" href="{% url 'all-profiles-view' %}">
             People
           </a>
+
+            <a class="item" href="{% url 'my-invites-view' %}">
+            Friend Requests
+          </a>
+
+
+
           <div class="right menu">
                {% if request.user.is_authenticated %}
             <div class="item">
