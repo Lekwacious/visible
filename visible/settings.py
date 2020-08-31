@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '&m-p_72b=nl5od=+tqr@-ew-@7=$!2s5skpd5f_lc*k613+e0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com']
+ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com', ]
 
 
 # Application definition
