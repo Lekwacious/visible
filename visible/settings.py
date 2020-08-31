@@ -24,6 +24,7 @@ SECRET_KEY = '&m-p_72b=nl5od=+tqr@-ew-@7=$!2s5skpd5f_lc*k613+e0@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = []
 
@@ -40,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     #'django.contrib.postgres',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,6 +126,7 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_URL = '/static/'
+static_root = os.path.join(BASE_DIR, 'static')
 
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
