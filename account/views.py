@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.postgres.search import SearchVector
+#from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -120,9 +120,9 @@ def invites_received_view2(request):
     context = {'qs': results,
                'is_empty': is_empty, }
 
-    print(results)
-    print('-----------')
-    print(qs)
+   # print(results)
+    #print('-----------')
+   # print(qs)
     return render(request, 'profiles/my_invites2.html', context)
 
 
@@ -259,13 +259,13 @@ def people_you_mayKnow(request):
     return render(request, 'profiles/peopple-you-may-know.html', context)
 
 
-def user_search(request):
-    form = SearchForm()
-    query = None
-    results = []
-    if 'query' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            query = form.cleaned_data['query']
-            results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
-    return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})
+# def user_search(request):
+#     form = SearchForm()
+#     query = None
+#     results = []
+#     if 'query' in request.GET:
+#         form = SearchForm(request.GET)
+#         if form.is_valid():
+#             query = form.cleaned_data['query']
+#             results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
+#     return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})
