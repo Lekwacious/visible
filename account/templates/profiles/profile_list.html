@@ -18,6 +18,7 @@
                         <h3>{{ obj.first_name }} {{ obj.last_name }}</h3>
                         <p>{{ obj.bio }}</p>
                         <button class="ui primary button mb-5 w-big">See profile</button>
+                        <br>
 
                         {% if obj.user not in rel_receiver and obj.user not in rel_sender %}
                                 <form action="{% url 'send-invite' %}" method="post">

@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 from .views import my_profile_view, invites_received_view, ProfileLIstView, invite_profiles_list_view, send_invitation, \
     remove_from_friends, accept_invitation, reject_invitation, invite_profiles_list_views, friends_list,\
-    people_you_mayKnow, invites_received_view2, user_search
+    people_you_mayKnow, invites_received_view2, user_search, ProfileDetailView
 
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
@@ -29,5 +29,6 @@ urlpatterns = [
    path('friends', friends_list, name='friends'),
     path('peopleyoumayknow', people_you_mayKnow, name='peopleyoumayknow'),
     path('search', user_search, name='search'),
+    path('<slug>/', ProfileDetailView.as_view(), name='profile-details'),
 
 ]

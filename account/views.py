@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Profile, Relationship
 from .forms import ProfileModelForm, SearchForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 
 @login_required
@@ -44,6 +44,34 @@ def register(request):
 
     else:
         return render(request, 'account/register.html')
+
+
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'account/detail.html'
+
+    def get_object(self, slug=None):
+        slug = self.kwargs.get('slug')
+        profile = Profile.objects.get(slug=slug)
+        return profile
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = User.objects.get(username__iexact=self.request.user)
+        profile = Profile.objects.get(user=user)
+        rel_r = Relationship.objects.filter(sender=profile)
+        rel_s = Relationship.objects.filter(receiver=profile)
+        rel_receiver = []
+        rel_sender = []
+        for item in rel_r:
+            rel_receiver.append(item.receiver.user)
+        for item in rel_s:
+            rel_sender.append(item.sender.user)
+        context['rel_receiver'] = rel_receiver
+        context['rel_sender'] = rel_sender
+        context['posts'] = self.get_object().get_all_authors_post()
+        context['len_post'] = True if len(self.get_object().get_all_authors_post()) > 0 else False
+
 
 
 def my_profile_view(request):
