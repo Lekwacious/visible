@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com', ]
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -27,8 +27,8 @@ SECRET_KEY = '&m-p_72b=nl5od=+tqr@-ew-@7=$!2s5skpd5f_lc*k613+e0@'
 DEBUG = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com']
 
+ALLOWED_HOSTS = ['https://awesomevisible.herokuapp.com/']
 
 # Application definition
 
@@ -128,7 +128,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "/account/static")
 
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
