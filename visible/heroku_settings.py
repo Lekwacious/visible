@@ -1,7 +1,7 @@
+from .settings import *
 import os
-from settings import *
 
-## settings.py
+# settings.py
 import dj_database_url
 
 # set default value
