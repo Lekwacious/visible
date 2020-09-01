@@ -16,3 +16,6 @@ DATABASES = {
 if 'DATABASE_URL' in os.environ:
     # replace default with parsed value
     DATABASES['default'] = dj_database_url.config(ssl_require=True)
+
+    import django_heroku
+    django_heroku.settings(locals())
