@@ -1,0 +1,45 @@
+body{
+    background-color: #F8F8F8;
+}
+.navsemantic{
+    border-radius: 0px !important;
+    padding: 10px 0 10px 0 !important;
+    background-color: blue;
+}
+.mb-7{
+    margin-bottom: 7px !important;
+}
+.nt-5{
+    margin-top: 5px !important;
+}
+.mymodal{
+    height: 20px !important;
+    top:20px !important;
+    font-size: 20px !important;
+}
+.mb-5{
+    margin-bottom: 5px !important;
+}
+.w-big{
+    width: 200px !important;
+}
+.bwhite-lg{
+    background-color: transparent !important;
+}
+.bwhite-sm{
+    background-color: transparent !important;
+    width: 10px !important;
+}
+.comment-box{
+    display: none;
+}
+.footer {
+    position: relative;
+    margin-top: -70px;
+    height: 70px;
+    #clear: both;
+
+}
+.size{
+    size: 12px;
+}
