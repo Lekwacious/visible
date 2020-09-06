@@ -14,6 +14,8 @@ from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 
@@ -28,7 +30,7 @@ DEBUG = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-ALLOWED_HOSTS = ['awesomevisible.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'awesomevisible.herokuapp.com']
 
 # Application definition
 
@@ -41,9 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
+    'chat',
+    'cloudinary',
+
     #'django.contrib.postgres',
 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,13 +76,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'visible.wsgi.application'
-
+#ASGI_APPLICATION = 'visible.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -128,7 +135,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static_cdn', 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static_cdn', 'media_root')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]

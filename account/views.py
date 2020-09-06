@@ -72,7 +72,7 @@ class ProfileDetailView(DetailView):
         context['posts'] = self.get_object().get_all_authors_post()
         context['len_post'] = True if len(self.get_object().get_all_authors_post()) > 0 else False
 
-
+        return context
 
 def my_profile_view(request):
     profile = Profile.objects.get(user=request.user)
@@ -259,13 +259,13 @@ def people_you_mayKnow(request):
     return render(request, 'profiles/peopple-you-may-know.html', context)
 
 
-# def user_search(request):
-#     form = SearchForm()
-#     query = None
-#     results = []
-#     if 'query' in request.GET:
-#         form = SearchForm(request.GET)
-#         if form.is_valid():
-#             query = form.cleaned_data['query']
-#             results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
-#     return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})
+def user_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
+    return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})

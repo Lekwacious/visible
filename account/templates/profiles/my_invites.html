@@ -19,7 +19,7 @@
                             <h3>{{ obj.bio }}</h3>
                             <h3>{{ obj.gender }}</h3>
                         <br>
-                        <a href=""><button class="ui primary button w-big mb-5">See profile</button></a>
+                        <a href="{{ obj.get_absolute_url }}"><button class="ui primary button w-big mb-5">See profile</button></a>
                         <form action="{% url 'accept-invite' %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="profile_pk" value="{{ obj.pk }}">

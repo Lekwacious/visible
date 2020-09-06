@@ -13,7 +13,7 @@
          <h3>{{ obj.first_name }} {{ obj.last_name  }}</h3>
         <h3>Bio: {{ obj.bio }}</h3>
         <h3>Gender: {{ obj.gender }}</h3>
-         <a href=""><button class="ui primary button w-big mb-5">See profile</button></a>
+         <a href="{{ obj.get_absolute_url }}"><button class="ui primary button w-big mb-5">See profile</button></a>
         </div>
         </div>
 </div>

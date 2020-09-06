@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.db.models import Q
 from .utils import get_random_code
+from django.shortcuts import reverse
 # Create your models here.
 
 
@@ -47,6 +48,12 @@ class Profile(models.Model):
 
     objects = ProfileManager()
 
+    def __str__(self):
+        return f"{self.user.username}-{self.created.strftime('%d-%m-%y')}"
+
+    def get_absolute_url(self):
+        return reverse("profile-details", kwargs={"slug": self.slug})
+
     def get_friends(self):
         return self.friends.all()
 
@@ -74,9 +81,6 @@ class Profile(models.Model):
             total_liked += item.liked.all().count()
         return total_liked
 
-    def __str__(self):
-        return f"{self.user.username}-{self.created.strftime('%d-%m-%y')}"
-    
     __initial_first_name = None
     __initial_last_name = None
     

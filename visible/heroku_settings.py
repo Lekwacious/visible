@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': 'db_name',
     }
 }
-
+from visible import config
 # if environment variable present, it must be Heroku
 if 'DATABASE_URL' in os.environ:
     # replace default with parsed value
