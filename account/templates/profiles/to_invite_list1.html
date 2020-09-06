@@ -9,7 +9,7 @@
                     <div class="two wide column">
 
                         <p>{{ people.bio }}</p>
-                     <button class="ui primary button mb-5 w-big">See profile</button>
+                        <a href="{{ obj.get_absolute_url }}"><button class="ui primary button mb-5 w-big">See profile</button></a>
 
                                 <form action="{% url 'send-invite' %}" method="post">
                                     {% csrf_token %}
