@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from .utils import get_random_code
 from django.shortcuts import reverse
+from cloudinary.models import CloudinaryField
 # Create your models here.
 
 
@@ -39,7 +40,7 @@ class Profile(models.Model):
     date_of_birth = models.DateField(blank=True, null=True)
     city = models.CharField(max_length=30, default='Lagos', blank=True)
     country = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(default='avatar.png', upload_to='avatar/')
+    avatar = CloudinaryField('avatar/', default='avatar.png', )
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
     work_place = models.CharField(blank=True, max_length=400)
     slug = models.SlugField(unique=True, blank=True)

@@ -30,12 +30,34 @@
 
           <div class="right menu">
                {% if request.user.is_authenticated %}
-            <div class="item">
-              <div class="ui icon input">
-                <input type="text" placeholder="Search...">
-                <i class="search link icon"></i>
-              </div>
-            </div>
+
+                    {% if query %}
+                        <h1>Posts containing "{{ query }}"</h1>
+                        <h3>
+                        {% with results.count as total_results %}
+                        Found {{ total_results }} result{{ total_results|pluralize }}
+                        {% endwith %}
+                        </h3>
+                        {% for user in results %}
+                        <h4><a href="{{ user.avatar.url }}">{{ user.first_name }} {{ user.last_name }}</a></h4>
+                        {{ user.body }}
+                        {% empty %}
+                        <p>There are no results for your query.</p>
+                        {% endfor %}
+                        <p><a href="{% url "search" %}">Search again</a></p>
+                        {% else %}
+                        <h1>Search for posts</h1>
+                        <form method="get">
+                        {{ form.as_p }}
+                        <input type="submit" value="Search">
+                        </form>
+                        {% endif %}
+{#            <div class="item">#}
+{#              <div class="ui icon input">#}
+{#                <input type="text" placeholder="Search...">#}
+{#                <i class="search link icon"></i>#}
+{#              </div>#}
+{#            </div>#}
                 <p class="ui item"> Hello {{ request.user }}</p>
             <a class="ui item" href="{% url "logout" %}">
               Logout

@@ -26,9 +26,15 @@
                     </div>
 
                     <div class="item">
-                        Likes received
+                        Gender
                         <div class="ui label">
-                            {{ object.get_likes_received }}
+                            {{ object.gender }}
+                        </div>
+                    </div>
+                    <div class="item">
+                        Place of Work
+                        <div class="ui label">
+                            {{ object.work_place }}
                         </div>
                     </div>
 
@@ -70,7 +76,7 @@
                     {% endfor %}
 
                     {% else %}
-                        <h1>This user have made any post</h1>
+                        <h1>No post from this {{ object.first_name }}</h1>
                 {% endif %}
 
             </div>

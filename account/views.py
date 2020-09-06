@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-#from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchVector
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -268,4 +268,4 @@ def user_search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             results = Profile.objects.annotate(search=SearchVector('first_name', 'last_name', 'user'),).filter(search=query)
-    return render(request, 'profiles/search.html', {'form': form, 'query': query, 'results': results})
+    return render(request, 'navbar.html', {'form': form, 'query': query, 'results': results})
