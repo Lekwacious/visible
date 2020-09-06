@@ -19,9 +19,9 @@
                     </div>
 
                     <div class="item">
-                        Likes given
+                        Attended
                         <div class="ui label">
-                            {{ object.get_likes_given }}
+                            {{ object.school }}
                         </div>
                     </div>
 
@@ -76,7 +76,7 @@
                     {% endfor %}
 
                     {% else %}
-                        <h1>No post from this {{ object.first_name }}</h1>
+                        <h1>No post from {{ object.first_name }}</h1>
                 {% endif %}
 
             </div>

@@ -43,6 +43,7 @@ class Profile(models.Model):
     avatar = CloudinaryField('avatar', default='avatar.png', )
     friends = models.ManyToManyField(User, blank=True, related_name='friends')
     work_place = models.CharField(blank=True, max_length=400)
+    school = models.CharField(blank=True)
     slug = models.SlugField(unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
