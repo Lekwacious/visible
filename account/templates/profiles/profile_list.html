@@ -17,7 +17,7 @@
                     <div class="thirteen wide column">
                         <h3>{{ obj.first_name }} {{ obj.last_name }}</h3>
                         <p>{{ obj.bio }}</p>
-                        <a href="c> <button class="ui primary button mb-5 w-big">See profile</button></a>
+                        <a href="{{ obj.get_absolute_url }}"> <button class="ui primary button mb-5 w-big">See profile</button></a>
                         <br>
 
                         {% if obj.user not in rel_receiver and obj.user not in rel_sender %}
