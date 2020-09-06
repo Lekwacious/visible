@@ -1,8 +1,8 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from account.models import Profile
-
 from cloudinary.models import CloudinaryField
+
 
 class Post(models.Model):
     content = models.TextField()
