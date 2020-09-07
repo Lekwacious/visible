@@ -3,8 +3,9 @@
         {% for people in ap %}
 
              <h4>{{ people.first_name }} {{ people.last_name }}</h4>
+            <img  class="ui size mini circular image" src="{{ people.avatar.url }}" alt="">
+
             <div class="three wide column">
-                <img  class="ui size mini circular image" src="{{ people.avatar.url }}" alt="">
             </div>
                     <div class="two wide column">
 
@@ -13,7 +14,7 @@
 
 
 
-</div>
+                    </div>
 
 
 
