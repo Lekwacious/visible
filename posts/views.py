@@ -42,7 +42,7 @@ def post_comment_create_and_list_view(request):
 
     user = request.user
     ap = Profile.objects.get_all_profiles_to_invite(user)
-
+    print(qs)
     context = {
         'ap': ap,
         'qs': qs,
