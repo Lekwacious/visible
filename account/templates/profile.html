@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <div class="longer ui modal mymodal">
+ <div class="ui modal mymodal">
             <i class="close icon"></i>
             <div class="header">
             Update your Profile
@@ -17,17 +17,9 @@
                     <div class="ui header">Provide newest information about yourself.</div>
                         <form action="" method="post" class="ui form" enctype="multipart/form-data">
                             {% csrf_token %}
-                            {{ form.as_p }}{#                <div class="ui medium image">#}
-                    <img src="{{ profile.avatar.url  }}">
-                </div>
-                 <div class="description">
-                    <div class="ui header">Provide newest information about yourself.</div>
-                        <form action="" method="post" class="ui form" enctype="multipart/form-data">
-                            {% csrf_token %}
                             {{ form.as_p }}
 
                  </div>
-
             </div>
         <div class="actions">
             <button type="submit" class="ui positive right labeled icon button">
@@ -37,57 +29,6 @@
         </form>
   </div>
 </div>
-
-                 </div>
-
-            </div>
-        <div class="actions">
-            <button type="submit" class="ui positive right labeled icon button">
-                Update
-                <i class="checkmark icon"></i>
-             </button>
-        </form>
-  </div>
-</div>
-
-
-{#<!-- Button trigger modal -->#}
-{#<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">#}
-{#   Update Profile#}
-{#</button>#}
-{##}
-{#<!-- Modal -->#}
-{#<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">#}
-{#     <div class="image content">#}
-{#                <div class="ui medium image">#}
-{#                    <img src="{{ profile.avatar.url  }}">#}
-{#                </div>#}
-{#                 <div class="description">#}
-{#                    <div class="ui header">Provide newest information about yourself.</div>#}
-{#                        <form action="" method="post" class="ui form" enctype="multipart/form-data">#}
-{#                            {% csrf_token %}#}
-{#                            {{ form.as_p }}#}
-{##}
-{#                 </div>#}
-{##}
-{#            </div>#}
-{#        <div class="actions">#}
-{#            <button type="submit" class="ui positive right labeled icon button">#}
-{#                Update#}
-{#                <i class="checkmark icon"></i>#}
-{#             </button>#}
-{#        </form>#}
-{#  </div>#}
-{#</div>#}
-{#</div>#}
-
-
-
-
-
-
-
-
 
 <div class="ui segment">
     {% if confirm %}
@@ -101,12 +42,9 @@
         <div class="six wide column">
             <img class="ui medium rounded image" src="{{ profile.avatar.url }}" alt="profile image">
            <div class=" row nt-5">
-
-                <button class="ui secondary button" data-toggle="modal" data-target="#exampleModal" id="modal-btn">Update your profile</button>
-           </div>
-
-
+                <button class="ui secondary button" id="modal-btn">Update your profile</button>
         </div>
+           </div>
         <div class="ten wide column">
                 <table class=" ui table">
                     <tbody>
