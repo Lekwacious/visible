@@ -100,7 +100,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
   padding-top: 2rem;
 }
 .footer-margin{
-    margin-top: 1px;
+    margin-top: 10px;
 }
 hr.light{
   border-top: 1px solid #3f3f3f;
