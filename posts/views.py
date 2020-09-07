@@ -10,9 +10,8 @@ from django.contrib import messages
 
 @login_required
 def post_comment_create_and_list_view(request):
-    profile = Profile.objects.get(user=request.user)
 
-    qs = Post.objects.all(profile.get_friends())
+    qs = Post.objects.filter(request.profile.get_friends())
    # profile = Profile.objects.get(user=request.user)
 
     p_form = PostModelForm()

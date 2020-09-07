@@ -1,4 +1,7 @@
-{% extends "base.html" %}
+{#{% extends "base.html" %}#}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
 {% block title %}Welcome{% endblock %}
 {% block content %}
 <h1>Welcome{{ new_user.first_name }}</h1>
