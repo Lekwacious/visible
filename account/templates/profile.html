@@ -3,7 +3,7 @@
 
 
 {% block content %}
- <div class="ui modal mymodal">
+    <div class="longer ui modal mymodal">
             <i class="close icon"></i>
             <div class="header">
             Update your Profile
@@ -20,6 +20,7 @@
                             {{ form.as_p }}
 
                  </div>
+
             </div>
         <div class="actions">
             <button type="submit" class="ui positive right labeled icon button">
@@ -29,6 +30,12 @@
         </form>
   </div>
 </div>
+
+
+
+
+
+
 
 <div class="ui segment">
     {% if confirm %}
@@ -42,9 +49,12 @@
         <div class="six wide column">
             <img class="ui medium rounded image" src="{{ profile.avatar.url }}" alt="profile image">
            <div class=" row nt-5">
-                <button class="ui secondary button" id="modal-btn">Update your profile</button>
-        </div>
+
+                <button class="ui secondary button" data-toggle="modal" data-target="#exampleModal" id="modal-btn">Update your profile</button>
            </div>
+
+
+        </div>
         <div class="ten wide column">
                 <table class=" ui table">
                     <tbody>
@@ -111,4 +121,4 @@
 
 
 
-{% endblock content %}
+{% endblock %}
