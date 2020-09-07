@@ -95,13 +95,13 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 }
 .footer{
   font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-  background-color: black;
-  color:white;
+
   padding-top: 2rem;
   margin-top: 10px;
 }
-.footer-margin{
-
+.footer-color{
+    background-color: black;
+  color:white;
 }
 hr.light{
   border-top: 1px solid #3f3f3f;
