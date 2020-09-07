@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 
 class Post(models.Model):
     content = models.TextField()
-    image = CloudinaryField('post', validators=[FileExtensionValidator(['png', 'jpg', 'jpeg', 'mp4'])], blank=True)
+    image = CloudinaryField('post', validators=[FileExtensionValidator(['png', 'jpg', 'jpeg',])], blank=True)
     liked = models.ManyToManyField(Profile, blank=True, related_name='likes')
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)

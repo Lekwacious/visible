@@ -93,7 +93,7 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32
 .fa-youtube:hover{
   color: #d5d5d5;
 }
-footer{
+.footer{
   font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
   background-color: black;
   color:rgb(245, 71, 8);
