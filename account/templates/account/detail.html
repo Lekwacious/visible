@@ -71,8 +71,12 @@
                     {% for post in posts%}
                         <div class="segment ui fluid">
                         {{ post.content }}
-                        {{ post.image }}
                         </div>
+                        <div class="ui fluid image">
+                         {% if post.image %}
+                        <img src={{post.image.url}}>
+                        {% endif %}
+                         </div>
 
                     {% endfor %}
 
